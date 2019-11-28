@@ -24,9 +24,7 @@ platform :ios do
           type: "appstore",
           username: "rushiraj.jhala@tatvasoft.com",
           app_identifier: "com.tatva.gatest")
-     build_app(scheme: "gatest")
-     upload_to_testflight
-   # gym(scheme: "gatest", export_method: "app-store", clean: true)
-   # testflight
+    gym(scheme: "gatest", export_method: "app-store", clean: true , disable_xcpretty: true)
+    testflight
   end
 end
