@@ -10,12 +10,17 @@ jobs:
           destination: ['platform=iOS Simulator,OS=12.2,name=iPhone X']
 
     steps:
+        - name: Fetch cert
+          uses: maierj/fastlane-action@v0.10.0
+          with:
+           lane: 'beta'
+          
       #- name: Build and Test
       #  run: bundle exec fastlane scan --destination "${destination}" --scheme "TestGTAction"
       #  env:
       #    destination: ${{ matrix.destination }}
 
-      - name: Checkout
-        uses: actions/checkout@master
-      - name: Build and test
-        run: swift build -v
+#       - name: Checkout
+#         uses: actions/checkout@master
+#       - name: Build and test
+#         run: swift build -v
