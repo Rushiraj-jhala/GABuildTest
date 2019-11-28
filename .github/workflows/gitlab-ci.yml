@@ -8,6 +8,5 @@ jobs:
     name: My Job
     runs-on: ubuntu-latest
     steps:
-      - run: 
-       fastlane beta
-  
+      - name : beta
+        run: fastlane beta 
