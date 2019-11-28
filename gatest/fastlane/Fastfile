@@ -18,7 +18,13 @@ default_platform(:ios)
 platform :ios do
   desc "Push a new beta build to TestFlight"
   lane :beta do
-    build_app(scheme: "gatest")
-    upload_to_testflight
+#     build_app(scheme: "gatest")
+#     upload_to_testflight
+    match(git_url: "https://github.com/Rushiraj-jhala/cert.git",
+          type: "development",
+          username: "rushiraj.jhala@tatvasoft.com",
+          app_identifier: "com.tatva.gatest")
+    gym(scheme: "gatest", export_method: "development", clean: true)
+    testflight
   end
 end
