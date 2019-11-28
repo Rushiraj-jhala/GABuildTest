@@ -1,0 +1,12 @@
+git_url("https://Rushiraj-jhala:4ba544472dada697aa078e69686410c774b3257d@github.com/Rushiraj-jhala/cert.git")
+
+storage_mode("git")
+
+type("development") # The default type, can be: appstore, adhoc, enterprise or development
+
+app_identifier("com.tatva.gatest")
+
+ENV["MATCH_PASSWORD"] = "Tatva123" #Password for the .p12 files saved in git repo.
+ENV["FASTLANE_USER"] = "rushiraj.jhala@tatvasoft.com" #Password for the .p12 files saved in git repo.
+ENV["FASTLANE_PASSWORD"] = "Tatva123" #Password to access git repo.
+ENV["FASTLANE_TEAM_ID"] = "TLR3WLLVQX"
