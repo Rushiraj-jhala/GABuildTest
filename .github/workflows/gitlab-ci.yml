@@ -5,15 +5,27 @@ jobs:
   ios-testflight:
     name: iOS Testflight
     runs-on: macOS-latest
-    strategy:
-        matrix:
-          destination: ['platform=iOS Simulator,OS=12.2,name=iPhone X']
-
     steps:
-        - name: Fetch cert
+        - name: Force xcode 11
+          run: sudo xcode-select -switch /Applications/Xcode_11.1.app  
+
+        - uses: actions/checkout@v1
+        - name: git Clone Cert 
+          run:
+            git clone https://arpit-tatvasoft:1129db3522c4b2afc9fd32cb2d394a1e17c21a62@github.com/arpit-tatvasoft/cert.git 
+            # /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/d20191121-1434-1s4ub1b
+        - name: List
+          run: |
+            ls
+            cd cert
+            ls
+        # - name: Build
+      #   run: |
+      #     xcodebuild -scheme demoCI -workspace demoCI.xcworkspace/ build 
+        - name: fastlane build and testflight deploy
           uses: maierj/fastlane-action@v0.10.0
           with:
-           lane: 'beta'
+            lane: 'beta'
           
       #- name: Build and Test
       #  run: bundle exec fastlane scan --destination "${destination}" --scheme "TestGTAction"
