@@ -1,24 +1,13 @@
-stages:
-  - test_flight
-
-variables:
-  LC_ALL: "en_US.UTF-8"
-  LANG: "en_US.UTF-8"
-
-before_script:
-  - gem install bundler
-  - bundle install
-
-test_flight_build:
-  dependencies: []
-  stage: test_flight
-  artifacts:
-    paths:
-      - fastlane/screenshots
-      - fastlane/logs
-  script:
-    - fastlane beta
-  tags:
-    - ios
-  only:
-     - develop
+on:
+  push:
+    branches: 
+      - develop
+      
+jobs:
+  my-job:
+    name: My Job
+    runs-on: ubuntu-latest
+    steps:
+      - run: 
+       fastlane beta
+  
