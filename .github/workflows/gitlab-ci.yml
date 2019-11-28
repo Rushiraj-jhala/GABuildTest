@@ -1,12 +1,21 @@
-on:
-  push:
-    branches: 
-      - develop
-      
+name: gitlab-ci
+on: push
+    
 jobs:
-  my-job:
-    name: My Job
-    runs-on: ubuntu-latest
+  ios-testflight:
+    name: iOS Testflight
+    runs-on: macOS-latest
+    strategy:
+        matrix:
+          destination: ['platform=iOS Simulator,OS=12.2,name=iPhone X']
+
     steps:
-      - name : beta
-        run: fastlane beta 
+      #- name: Build and Test
+      #  run: bundle exec fastlane scan --destination "${destination}" --scheme "TestGTAction"
+      #  env:
+      #    destination: ${{ matrix.destination }}
+
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Build and test
+        run: swift build -v
