@@ -2,7 +2,7 @@ git_url("https://Rushiraj-jhala:4ba544472dada697aa078e69686410c774b3257d@github.
 
 storage_mode("git")
 
-type("development") # The default type, can be: appstore, adhoc, enterprise or development
+type("appstore") # The default type, can be: appstore, adhoc, enterprise or development
 
 app_identifier("com.tatva.gatest")
 
